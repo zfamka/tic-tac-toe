@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
@@ -12,8 +15,10 @@
 <body>
 
   <div class="wrapper">
-    <div class="countX">X = 0</div>
-    <div class="countO">O = 0</div>
+    <div class="countX"><span class="countX_X" style="font-size: 40px;">X</span> Score: <span class="scoreX">0</span>
+    </div>
+    <div class="countO"><span class="countO_O" style="font-size: 40px;">O</span> Score: <span class="scoreO">0</span>
+    </div>
   </div>
   <div class="container">
     <div class="area">
@@ -29,8 +34,10 @@
     </div>
   </div>
 
-  <div class="clear">clear</div>
-
+  <div class="btn-wrapper">
+    <div class="clear">Clear area</div>
+    <div class="resetScore">Reset score</div>
+  </div>
   <script src="script.js"></script>
 </body>
 
