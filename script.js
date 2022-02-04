@@ -1,11 +1,27 @@
 let move = 0;
-let countFirstPlayer = document.querySelector('.scoreX');
-let countSecondPlayer = document.querySelector('.scoreO');
 let countX = 0;
 let countO = 0;
+let countFirstPlayer = document.querySelector('.scoreX');
+let countSecondPlayer = document.querySelector('.scoreO');
 const clearBtn = document.querySelector('.clear');
 const resetBtn = document.querySelector('.resetScore');
 const boxes = document.querySelectorAll('.box');
+
+function draw() {
+  if (move == 9) {
+    boxes.forEach((elem) => {
+      move = 0;
+      removeClass(elem);
+      elem.innerHTML = '';
+    })
+  }
+}
+
+function removeClass(remove) {
+  remove.classList.remove('countX_X');
+  remove.classList.remove('countO_O');
+}
+
 document.querySelector('.area').addEventListener('click', (elem) => {
 
   if (elem.target.innerHTML) return;
@@ -41,26 +57,24 @@ function check() {
       countX++;
       countFirstPlayer.innerHTML = countX;
       setTimeout(() => {
-        for (let k = 0; k < boxes.length; k++) {
+        boxes.forEach((elem) => {
           if (move >= 0) {
-            boxes[k].classList.remove('countX_X');
-            boxes[k].classList.remove('countO_O');
+            removeClass(elem);
+            elem.innerHTML = '';
           }
-          boxes[k].innerHTML = '';
-        }
+        })
       }, 200);
       move = 0;
     } else if (boxes[arr[i][0]].innerHTML == 'O' && boxes[arr[i][1]].innerHTML == 'O' && boxes[arr[i][2]].innerHTML == 'O') {
       countO++
       countSecondPlayer.innerHTML = countO;
       setTimeout(() => {
-        for (let k = 0; k < boxes.length; k++) {
+        boxes.forEach((elem) => {
           if (move >= 0) {
-            boxes[k].classList.remove('countX_X');
-            boxes[k].classList.remove('countO_O');
+            removeClass(elem);
+            elem.innerHTML = '';
           }
-          boxes[k].innerHTML = '';
-        }
+        })
       }, 200)
       move = 0;
     }
@@ -69,11 +83,10 @@ function check() {
 
 (function clearBtnFunc() {
   clearBtn.addEventListener('click', () => {
-    for (let i = 0; i < boxes.length; i++) {
-      boxes[i].classList.remove('countX_X');
-      boxes[i].classList.remove('countO_O');
-      boxes[i].innerHTML = '';
-    }
+    boxes.forEach((elem) => {
+      removeClass(elem);
+      elem.innerHTML = '';
+    })
     move = 0;
   })
 }());
@@ -85,22 +98,12 @@ function check() {
     countFirstPlayer.innerHTML = 0;
     countSecondPlayer.innerHTML = 0;
 
-    for (let i = 0; i < boxes.length; i++) {
-      boxes[i].classList.remove('countX_X');
-      boxes[i].classList.remove('countO_O');
-      boxes[i].innerHTML = '';
-    }
+    boxes.forEach((elem) => {
+      removeClass(elem);
+      elem.innerHTML = '';
+    })
+
     move = 0;
   })
 }());
 
-function draw() {
-  if (move == 9) {
-    boxes.forEach((elem) => {
-      move = 0;
-      elem.classList.remove('countX_X');
-      elem.classList.remove('countO_O');
-      elem.innerHTML = '';
-    })
-  }
-}
