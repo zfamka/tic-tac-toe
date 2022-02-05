@@ -3,13 +3,19 @@ import { removeClass } from './modules/removeClass.js';
 import { resetBtnFunc } from './modules/resetBtn.js';
 import { clearBtnFunc } from './modules/clearBtn.js';
 
-window.move = 0;
 let countFirstPlayer = document.querySelector('.scoreX');
 let countSecondPlayer = document.querySelector('.scoreO');
-let countX = 0;
-let countO = 0;
 const boxes = document.querySelectorAll('.box');
 const area = document.querySelector('.area');
+export const variables = {
+  move: 0,
+  countX: 0,
+  countO: 0,
+  boxes,
+  countFirstPlayer,
+  countSecondPlayer,
+  area
+}
 
 resetBtnFunc();
 clearBtnFunc();
@@ -18,7 +24,7 @@ clearBtnFunc();
 document.querySelector('.area').addEventListener('click', (elem) => {
   if (elem.target.innerHTML) return;
 
-  if (move % 2 == 0) {
+  if (variables.move % 2 == 0) {
     elem.target.classList.add('countX_X');
     elem.target.innerHTML = 'X';
   } else {
@@ -26,7 +32,7 @@ document.querySelector('.area').addEventListener('click', (elem) => {
     elem.target.innerHTML = 'O';
   }
 
-  move++;
+  variables.move++;
   check();
   setTimeout(() => {
     draw();
@@ -45,34 +51,34 @@ function check() {
     [0, 4, 8]
   ];
   for (let i = 0; i < arr.length; i++) {
-    if (boxes[arr[i][0]].innerHTML == 'X' && boxes[arr[i][1]].innerHTML == 'X' && boxes[arr[i][2]].innerHTML == 'X') {
-      countX++;
-      countFirstPlayer.innerHTML = countX;
-      area.style = 'pointer-events: none;'
+    if (variables.boxes[arr[i][0]].innerHTML == 'X' && variables.boxes[arr[i][1]].innerHTML == 'X' && variables.boxes[arr[i][2]].innerHTML == 'X') {
+      variables.countX++;
+      variables.countFirstPlayer.innerHTML = variables.countX;
+      variables.area.style = 'pointer-events: none;'
       setTimeout(() => {
-        boxes.forEach((elem) => {
-          if (move >= 0) {
-            area.style = 'pointer-events: auto;'
+        variables.boxes.forEach((elem) => {
+          if (variables.move >= 0) {
+            variables.area.style = 'pointer-events: auto;'
             removeClass(elem);
             elem.innerHTML = '';
           }
         })
       }, 500);
-      move = 0;
-    } else if (boxes[arr[i][0]].innerHTML == 'O' && boxes[arr[i][1]].innerHTML == 'O' && boxes[arr[i][2]].innerHTML == 'O') {
-      countO++
-      countSecondPlayer.innerHTML = countO;
-      area.style = 'pointer-events: none;'
+      variables.move = 0;
+    } else if (variables.boxes[arr[i][0]].innerHTML == 'O' && variables.boxes[arr[i][1]].innerHTML == 'O' && variables.boxes[arr[i][2]].innerHTML == 'O') {
+      variables.countO++
+      variables.countSecondPlayer.innerHTML = countO;
+      variables.area.style = 'pointer-events: none;'
       setTimeout(() => {
-        boxes.forEach((elem) => {
-          if (move >= 0) {
-            area.style = 'pointer-events: auto;'
+        variables.boxes.forEach((elem) => {
+          if (variables.move >= 0) {
+            variables.area.style = 'pointer-events: auto;'
             removeClass(elem);
             elem.innerHTML = '';
           }
         })
       }, 500)
-      move = 0;
+      variables.move = 0;
     }
   }
 }

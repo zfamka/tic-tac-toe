@@ -1,7 +1,10 @@
+import { removeClass } from './removeClass.js';
+import { variables } from "../script.js";
+
 export function draw() {
-  if (move == 9) {
-    boxes.forEach((elem) => {
-      move = 0;
+  if (variables.move == 9) {
+    variables.boxes.forEach((elem) => {
+      variables.move = 0;
       removeClass(elem);
       elem.innerHTML = '';
     })
