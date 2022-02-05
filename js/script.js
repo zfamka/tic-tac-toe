@@ -1,30 +1,21 @@
-let move = 0;
-let countX = 0;
-let countO = 0;
+import { draw } from './modules/draw.js';
+import { removeClass } from './modules/removeClass.js';
+import { resetBtnFunc } from './modules/resetBtn.js';
+import { clearBtnFunc } from './modules/clearBtn.js';
+
+window.move = 0;
 let countFirstPlayer = document.querySelector('.scoreX');
 let countSecondPlayer = document.querySelector('.scoreO');
-const clearBtn = document.querySelector('.clear');
-const resetBtn = document.querySelector('.resetScore');
+let countX = 0;
+let countO = 0;
 const boxes = document.querySelectorAll('.box');
 const area = document.querySelector('.area');
 
-function draw() {
-  if (move == 9) {
-    boxes.forEach((elem) => {
-      move = 0;
-      removeClass(elem);
-      elem.innerHTML = '';
-    })
-  }
-}
+resetBtnFunc();
+clearBtnFunc();
 
-function removeClass(remove) {
-  remove.classList.remove('countX_X');
-  remove.classList.remove('countO_O');
-}
 
 document.querySelector('.area').addEventListener('click', (elem) => {
-
   if (elem.target.innerHTML) return;
 
   if (move % 2 == 0) {
@@ -85,30 +76,3 @@ function check() {
     }
   }
 }
-
-(function clearBtnFunc() {
-  clearBtn.addEventListener('click', () => {
-    boxes.forEach((elem) => {
-      removeClass(elem);
-      elem.innerHTML = '';
-    })
-    move = 0;
-  })
-}());
-
-(function resetBtnFunc() {
-  resetBtn.addEventListener('click', () => {
-    countX = 0;
-    countO = 0;
-    countFirstPlayer.innerHTML = 0;
-    countSecondPlayer.innerHTML = 0;
-
-    boxes.forEach((elem) => {
-      removeClass(elem);
-      elem.innerHTML = '';
-    })
-
-    move = 0;
-  })
-}());
-
