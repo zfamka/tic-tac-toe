@@ -3,29 +3,28 @@ import { removeClass } from './modules/removeClass.js';
 import { resetBtnFunc } from './modules/resetBtn.js';
 import { clearBtnFunc } from './modules/clearBtn.js';
 
-let countFirstPlayer = document.querySelector('.scoreX');
-let countSecondPlayer = document.querySelector('.scoreO');
-const boxes = document.querySelectorAll('.box');
-const area = document.querySelector('.area');
-export const variables = {
+export const appState = {
   move: 0,
   countX: 0,
   countO: 0,
-  boxes,
-  countFirstPlayer,
-  countSecondPlayer,
-  area
 }
 
+export const ui = {
 
-resetBtnFunc();
+}
+
+ui.countFirstPlayer = document.querySelector('.scoreX');
+ui.countSecondPlayer = document.querySelector('.scoreO');
+ui.area = document.querySelector('.area');
+ui.boxes = document.querySelectorAll('.box');
+
 clearBtnFunc();
-
+resetBtnFunc();
 
 document.querySelector('.area').addEventListener('click', (elem) => {
   if (elem.target.innerHTML) return;
 
-  if (variables.move % 2 == 0) {
+  if (appState.move % 2 == 0) {
     elem.target.classList.add('countX_X');
     elem.target.innerHTML = 'X';
   } else {
@@ -33,7 +32,7 @@ document.querySelector('.area').addEventListener('click', (elem) => {
     elem.target.innerHTML = 'O';
   }
 
-  variables.move++;
+  appState.move++;
   check();
   setTimeout(() => {
     draw();
@@ -51,35 +50,36 @@ function check() {
     [2, 4, 6],
     [0, 4, 8]
   ];
+
   for (let i = 0; i < arr.length; i++) {
-    if (variables.boxes[arr[i][0]].innerHTML == 'X' && variables.boxes[arr[i][1]].innerHTML == 'X' && variables.boxes[arr[i][2]].innerHTML == 'X') {
-      variables.countX++;
-      variables.countFirstPlayer.innerHTML = variables.countX;
-      variables.area.style = 'pointer-events: none;'
+    if (ui.boxes[arr[i][0]].innerHTML == 'X' && ui.boxes[arr[i][1]].innerHTML == 'X' && ui.boxes[arr[i][2]].innerHTML == 'X') {
+      appState.countX++;
+      ui.countFirstPlayer.innerHTML = appState.countX;
+      ui.area.style = 'pointer-events: none;'
       setTimeout(() => {
-        variables.boxes.forEach((elem) => {
-          if (variables.move >= 0) {
-            variables.area.style = 'pointer-events: auto;'
+        ui.boxes.forEach((elem) => {
+          if (appState.move >= 0) {
+            ui.area.style = 'pointer-events: auto;'
             removeClass(elem);
             elem.innerHTML = '';
           }
         })
       }, 500);
-      variables.move = 0;
-    } else if (variables.boxes[arr[i][0]].innerHTML == 'O' && variables.boxes[arr[i][1]].innerHTML == 'O' && variables.boxes[arr[i][2]].innerHTML == 'O') {
-      variables.countO++
-      variables.countSecondPlayer.innerHTML = variables.countO;
-      variables.area.style = 'pointer-events: none;'
+      appState.move = 0;
+    } else if (ui.boxes[arr[i][0]].innerHTML == 'O' && ui.boxes[arr[i][1]].innerHTML == 'O' && ui.boxes[arr[i][2]].innerHTML == 'O') {
+      appState.countO++
+      ui.countSecondPlayer.innerHTML = appState.countO;
+      ui.area.style = 'pointer-events: none;'
       setTimeout(() => {
-        variables.boxes.forEach((elem) => {
-          if (variables.move >= 0) {
-            variables.area.style = 'pointer-events: auto;'
+        ui.boxes.forEach((elem) => {
+          if (appState.move >= 0) {
+            ui.area.style = 'pointer-events: auto;'
             removeClass(elem);
             elem.innerHTML = '';
           }
         })
       }, 500)
-      variables.move = 0;
+      appState.move = 0;
     }
   }
 }

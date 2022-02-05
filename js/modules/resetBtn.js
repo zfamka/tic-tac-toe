@@ -1,19 +1,20 @@
 import { removeClass } from './removeClass.js';
-import { variables } from "../script.js";
+import { appState } from "../script.js";
+import { ui } from "../script.js";
 
 
 export function resetBtnFunc() {
   const resetBtn = document.querySelector('.resetScore');
   resetBtn.addEventListener('click', () => {
-    variables.countX = 0;
-    variables.countO = 0;
-    variables.countFirstPlayer.innerHTML = 0;
-    variables.countSecondPlayer.innerHTML = 0;
+    appState.countX = 0;
+    appState.countO = 0;
+    ui.countFirstPlayer.innerHTML = 0;
+    ui.countSecondPlayer.innerHTML = 0;
 
-    variables.boxes.forEach((elem) => {
+    ui.boxes.forEach((elem) => {
       removeClass(elem);
       elem.innerHTML = '';
     })
-    variables.move = 0;
+    ui.move = 0;
   })
 };

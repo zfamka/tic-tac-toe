@@ -1,10 +1,11 @@
 import { removeClass } from './removeClass.js';
-import { variables } from "../script.js";
+import { appState } from "../script.js";
+import { ui } from "../script.js";
 
 export function draw() {
-  if (variables.move == 9) {
-    variables.boxes.forEach((elem) => {
-      variables.move = 0;
+  if (appState.move == 9) {
+    ui.boxes.forEach((elem) => {
+      appState.move = 0;
       removeClass(elem);
       elem.innerHTML = '';
     })

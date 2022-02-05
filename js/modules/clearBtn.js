@@ -1,13 +1,14 @@
 import { removeClass } from "./removeClass.js";
-import { variables } from "../script.js";
+import { appState } from "../script.js";
+import { ui } from "../script.js";
 
 export function clearBtnFunc() {
   const clearBtn = document.querySelector('.clear');
   clearBtn.addEventListener('click', () => {
-    variables.boxes.forEach((elem) => {
+    ui.boxes.forEach((elem) => {
       removeClass(elem);
       elem.innerHTML = '';
     })
-    variables.move = 0;
+    appState.move = 0;
   })
 };
