@@ -17,6 +17,7 @@ export const variables = {
   area
 }
 
+
 resetBtnFunc();
 clearBtnFunc();
 
@@ -67,7 +68,7 @@ function check() {
       variables.move = 0;
     } else if (variables.boxes[arr[i][0]].innerHTML == 'O' && variables.boxes[arr[i][1]].innerHTML == 'O' && variables.boxes[arr[i][2]].innerHTML == 'O') {
       variables.countO++
-      variables.countSecondPlayer.innerHTML = countO;
+      variables.countSecondPlayer.innerHTML = variables.countO;
       variables.area.style = 'pointer-events: none;'
       setTimeout(() => {
         variables.boxes.forEach((elem) => {
