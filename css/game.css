@@ -6,6 +6,10 @@
   font-family: 'Architects Daughter', cursive;
 }
 
+.game {
+  /* display: none; */
+}
+
 .wrapper {
   display: flex;
   justify-content: space-between;

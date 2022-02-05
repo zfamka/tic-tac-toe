@@ -8,42 +8,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/main.css">
   <title>Document</title>
 </head>
 
 <body>
 
-  <div class="winContainer">
-    <div class="winWindow">X WON</div>
-    <div class="winButton">NEXT</div>
+  <div class="winTable">
+    <div class="playerWon">X WoN</div>
+    <div class="btnNext">NEXT</div>
   </div>
 
-  <div class="wrapper">
-    <div class="countX"><span class="countX_X" style="font-size: 40px;">X</span> Score: <span class="scoreX">0</span>
+  <div class="game">
+    <div class="wrapper">
+      <div class="countX"><span class="countX_X" style="font-size: 40px;">X</span> Score: <span class="scoreX">0</span>
+      </div>
+      <div class="countO"><span class="countO_O" style="font-size: 40px;">O</span> Score: <span class="scoreO">0</span>
+      </div>
     </div>
-    <div class="countO"><span class="countO_O" style="font-size: 40px;">O</span> Score: <span class="scoreO">0</span>
+    <div class="container">
+      <div class="area">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="area">
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
+
+    <div class="btn-wrapper">
+      <div class="clear">Clear area</div>
+      <div class="resetScore">Reset score</div>
     </div>
   </div>
 
-  <div class="btn-wrapper">
-    <div class="clear">Clear area</div>
-    <div class="resetScore">Reset score</div>
-  </div>
-  <script src="script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
