@@ -1,0 +1,17 @@
+.countX {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .countX_X {
+    color: blue;
+  }
+  
+  .countO {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .countO_O {
+    color: red;
+  }

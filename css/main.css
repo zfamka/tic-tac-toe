@@ -1,2 +1,12 @@
-@import url(game.css);
+@import url(gameArea.css);
+@import url(score.css);
+@import url(clearNResetBtn.css);
 @import url(winTable.css);
+
+* {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Architects Daughter', cursive;
+  }
